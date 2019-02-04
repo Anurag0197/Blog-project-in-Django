@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Blog</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/js/medium-editor.min.js"></script>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/css/medium-editor.min.css" type="text/css" media="screen" charset="utf-8">
+   <link href="https://fonts.googleapis.com/css?family=Lobster|Montserrat|Russo+One" rel="stylesheet">
+    <link rel= "stylesheet" href = "{% static 'css/blog.css' %}"></head>
+  <body >
+    <nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="{% url 'blog:post_list' %}">My Tech Blog</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      {% if user.is_authenticated %}
+      <ul class="nav navbar-nav">
+        <li><a href="{% url 'blog:post_new' %}">New Post</a></li>
+        <li><a href="{% url 'blog:post_draft_list' %}">Draft</a></li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+      	<li> <a><strong>Welcome: {{ user.username|title }}</strong> </a></li>
+        <li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+      </ul>
+        {% endif %}
+    </div>
+  </div>
+</nav>
+
+  <div class="content container loader">
+    <div class="rows">
+      <div class="col-sm-8">
+          {% block content %}
+          {% endblock %}
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="content container">
+      <div class="rows">
+        <div class="col-sm-8">
+            {% block buttoncontent %}
+            {% endblock %}
+          </div>
+
+        </div>
+    </div>
+  </body>
+</html>
