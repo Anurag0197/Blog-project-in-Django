@@ -1,3 +1,11 @@
 # Blog-project-in-Django
 
-This is a personal Blog Website.It has like, share and comment options.Anyone can read, like and comment on this site, but blog can only be written by some superusers.
+● Used Django Web framework to build a blog application.
+
+● Implemented features like creating, drafting, editing and deleting post by the superuser. 
+
+● Implemented other features like share, like, comment for readers. 
+
+● Implemented the backend using Django (Python) and frontend using Html, CSS, Javascript, Bootstrap. 
+
+● Deployed the Blog Application on http://anuragblog.pythonanywhere.com 
